@@ -1,10 +1,10 @@
-# push_testing_fifo
+# PushNotificationFifoSystem
 
 This project contains source code and supporting files for a serverless application that you can deploy with the SAM CLI. It includes the following files and folders.
 
-- HelloWorldFunction/src/main - Code for the application's Lambda function.
+- PushNotificationFifoFunction/src/main - Code for the application's Lambda function.
 - events - Invocation events that you can use to invoke the function.
-- HelloWorldFunction/src/test - Unit tests for the application code. 
+- PushNotificationFifoFunction/src/test - Unit tests for the application code. 
 - template.yaml - A template that defines the application's AWS resources.
 
 The application uses several AWS resources, including Lambda functions and an API Gateway API. These resources are defined in the `template.yaml` file in this project. You can update the template to add AWS resources through the same deployment process that updates your application code.
@@ -57,35 +57,35 @@ You can find your API Gateway Endpoint URL in the output values displayed after 
 Build your application with the `sam build` command.
 
 ```bash
-push_testing_fifo$ sam build
+PushNotificationFifoSystem$ sam build
 ```
 
-The SAM CLI installs dependencies defined in `HelloWorldFunction/pom.xml`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
+The SAM CLI installs dependencies defined in `PushNotificationFifoFunction/pom.xml`, creates a deployment package, and saves it in the `.aws-sam/build` folder.
 
 Test a single function by invoking it directly with a test event. An event is a JSON document that represents the input that the function receives from the event source. Test events are included in the `events` folder in this project.
 
 Run functions locally and invoke them with the `sam local invoke` command.
 
 ```bash
-push_testing_fifo$ sam local invoke HelloWorldFunction --event events/event.json
+PushNotificationFifoSystem$ sam local invoke PushNotificationFifoFunction --event events/event.json
 ```
 
 The SAM CLI can also emulate your application's API. Use the `sam local start-api` to run the API locally on port 3000.
 
 ```bash
-push_testing_fifo$ sam local start-api
-push_testing_fifo$ curl http://localhost:3000/
+PushNotificationFifoSystem$ sam local start-api
+PushNotificationFifoSystem$ curl http://localhost:3000/
 ```
 
 The SAM CLI reads the application template to determine the API's routes and the functions that they invoke. The `Events` property on each function's definition includes the route and method for each path.
 
 ```yaml
       Events:
-        HelloWorld:
+        PushNotificationFifoAPI:
           Type: Api
           Properties:
-            Path: /hello
-            Method: get
+            Path: /pushNotificationFifo
+            Method: post
 ```
 
 ## Add a resource to your application
@@ -98,18 +98,18 @@ To simplify troubleshooting, SAM CLI has a command called `sam logs`. `sam logs`
 `NOTE`: This command works for all AWS Lambda functions; not just the ones you deploy using SAM.
 
 ```bash
-push_testing_fifo$ sam logs -n HelloWorldFunction --stack-name push_testing_fifo --tail
+PushNotificationFifoSystem$ sam logs -n PushNotificationFifoFunction --stack-name PushNotificationFifoSystem --tail
 ```
 
 You can find more information and examples about filtering Lambda function logs in the [SAM CLI Documentation](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-logging.html).
 
 ## Unit tests
 
-Tests are defined in the `HelloWorldFunction/src/test` folder in this project.
+Tests are defined in the `PushNotificationFifoFunction/src/test` folder in this project.
 
 ```bash
-push_testing_fifo$ cd HelloWorldFunction
-HelloWorldFunction$ mvn test
+PushNotificationFifoSystem$ cd PushNotificationFifoFunction
+PushNotificationFifoFunction$ mvn test
 ```
 
 ## Cleanup
@@ -117,11 +117,11 @@ HelloWorldFunction$ mvn test
 To delete the sample application that you created, use the AWS CLI. Assuming you used your project name for the stack name, you can run the following:
 
 ```bash
-aws cloudformation delete-stack --stack-name push_testing_fifo
+aws cloudformation delete-stack --stack-name PushNotificationFifoSystem
 ```
 
 ## Resources
 
 See the [AWS SAM developer guide](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html) for an introduction to SAM specification, the SAM CLI, and serverless application concepts.
 
-Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond hello world samples and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)
+Next, you can use AWS Serverless Application Repository to deploy ready to use Apps that go beyond push notification fifo system sample and learn how authors developed their applications: [AWS Serverless Application Repository main page](https://aws.amazon.com/serverless/serverlessrepo/)

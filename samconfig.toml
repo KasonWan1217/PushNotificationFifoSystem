@@ -2,9 +2,9 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "fifo-push-noti"
+stack_name = "push-notification-fifo-system"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1li4q4wgc7fnm"
-s3_prefix = "fifo-push-noti"
+s3_prefix = "push-notification-fifo-system"
 region = "ap-east-1"
 confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
